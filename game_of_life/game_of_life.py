@@ -1,3 +1,4 @@
+from cProfile import run
 import random
 import sys
 import pygame
@@ -99,9 +100,11 @@ class Game:
              self.draw_grid()
             #  self.get_random_grid()
              pygame.display.flip()
-          
+def run_game_of_life():
+    Game((1400,800)).run_mainloop()
 if __name__=='__main__':
     g=Game(( 1400, 800))
    
     g.run_mainloop()
+
     

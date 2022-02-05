@@ -42,7 +42,7 @@ class Towers:
     def initialize_discs(self):
         output=[
             Disc(value=3,color='red',point=Point(65,550),dimension=(200,20)),
-            Disc(value=2,color='blue',point=Point(88,515),dimension=(150,20)),
+            Disc(value=2,color='cyan',point=Point(88,515),dimension=(150,20)),
             Disc(value=1,color='green',point=Point(115,480),dimension=(100,20))
         ]
         return output
@@ -59,7 +59,7 @@ class Towers:
 
     def move(self,front_tower, dest_tower):
         ring=self.towers[front_tower].discs.pop()
-        time.sleep(0.1)
+        time.sleep(1)
         ring.move_disc(self.towers[dest_tower])
         self.towers[dest_tower].discs.append(ring)
        
@@ -74,18 +74,19 @@ def solve_tower_of_hanoi(towers, n, star_tower, dest_tower, aux_tower):
     print(towers)
 
     solve_tower_of_hanoi(towers, n-1, aux_tower, dest_tower, star_tower)
-
-output=Towers([
-    Tower(1,Point(150,200)),
-    Tower(2,Point(370,200)),
-    Tower(3,Point(600,200)),
-])
-for tower in output.towers:
-    tower.draw_tower()
-    if len(tower.discs)>0:
-        for disc in tower.discs:
-            disc.draw_disc()
-solve_tower_of_hanoi(output, output.rings, 0, 2, 1)
-win.getMouse()
+def run_towers_of_hanoi():
+    output=Towers([
+        Tower(1,Point(150,200)),
+        Tower(2,Point(370,200)),
+        Tower(3,Point(600,200)),
+    ])
+    for tower in output.towers:
+        tower.draw_tower()
+        if len(tower.discs)>0:
+            for disc in tower.discs:
+                disc.draw_disc()
+    solve_tower_of_hanoi(output, output.rings, 0, 2, 1)
+    win.getMouse()
+run_towers_of_hanoi()
 # print(output)
 

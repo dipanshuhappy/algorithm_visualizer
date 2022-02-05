@@ -28,44 +28,42 @@ for i in range(w):
 
 
 counter = 0
+def run_sort_visualisation():
+    global counter
+    while True:
+        win.fill((10, 10, 10))
 
-while True:
-    win.fill((10, 10, 10))
+        if counter < len(h_arr):
 
-    if counter < len(h_arr):
+            min_idx = counter
+            for j in range(counter+1, len(h_arr)):
+                if h_arr[min_idx] > h_arr[j]:
+                    state[j] = 0
+                    min_idx = j
+                else:
+                    state[j] = 1
+                    state[min_idx] = 1
+            h_arr[counter], h_arr[min_idx] = h_arr[min_idx], h_arr[counter]
+        counter+=1
 
-        min_idx = counter
-        for j in range(counter+1, len(h_arr)):
-            if h_arr[min_idx] > h_arr[j]:
-                state[j] = 0
-                min_idx = j
+        if counter - 1 < len(h_arr):
+            state[counter - 1] = 2
+
+
+        for i in range(len(h_arr)):
+            if state[i] == 0:
+                color = RED
+            elif state[i] == 2:
+                color = GREEN  
             else:
-                state[j] = 1
-                state[min_idx] = 1
-        h_arr[counter], h_arr[min_idx] = h_arr[min_idx], h_arr[counter]
+                color = WHITE
+            pg.draw.rect(win, color, pg.Rect(int(i*n), HEIGHT - h_arr[i], n, h_arr[i]))
 
-    else:
-        print('Done')
-    counter+=1
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
 
-    if counter - 1 < len(h_arr):
-        state[counter - 1] = 2
-
-
-    for i in range(len(h_arr)):
-        if state[i] == 0:
-            color = RED
-        elif state[i] == 2:
-            color = GREEN  
-        else:
-            color = WHITE
-        pg.draw.rect(win, color, pg.Rect(int(i*n), HEIGHT - h_arr[i], n, h_arr[i]))
-
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            pg.quit()
-            sys.exit()
-
-    
-    clock.tick(5)
-    pg.display.flip()
+        
+        clock.tick(5)
+        pg.display.flip()

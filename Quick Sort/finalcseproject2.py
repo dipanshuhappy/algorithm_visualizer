@@ -1,12 +1,11 @@
+from cProfile import run
 from tkinter import *
-from tkinter import ttk
 import random
 from quicksort import quick_sort
-
 root = Tk()
 root.title('Sorting Algorithm Visualisation')
 root.maxsize(900, 600)
-root.config(bg='black')
+root.config(bg='cyan')
 
 #variables
 selected_alg = StringVar()
@@ -38,7 +37,7 @@ def drawData(data, colorArray):
 def Generate():
     global data
 
-    minVal = int(minEntry.get())
+    minVal = 1
     maxVal = int(maxEntry.get())
     size = int(sizeEntry.get())
 
@@ -46,45 +45,27 @@ def Generate():
     for _ in range(size):
         data.append(random.randrange(minVal, maxVal+1))
 
-    drawData(data, ['red' for x in range(len(data))]) #['red', 'red' ,....]
-
+    drawData(data, ['cyan' for x in range(len(data))])
 def StartAlgorithm():
     global data
     if not data: return
-
-    if algMenu.get() == 'Quick Sort':
-        quick_sort(data, 0, len(data)-1, drawData, speedScale.get())
-        drawData(data, ['green' for x in range(len(data))])
-    
-
+    quick_sort(data, 0, len(data)-1, drawData, speedScale.get())
+    drawData(data, ['green' for x in range(len(data))])
 #frame / base lauout
-UI_frame = Frame(root, width= 600, height=200, bg='grey')
+UI_frame = Frame(root, width= 500, height=200, bg='grey')
 UI_frame.grid(row=0, column=0, padx=10, pady=5)
-
-canvas = Canvas(root, width=600, height=380, bg='white')
-canvas.grid(row=1, column=0, padx=10, pady=5)
-
-#User Interface Area
-#Row[0]
+canvas = Canvas(root, width=500, height=380, bg='white')
+canvas.grid(row=1, column=0, padx=0, pady=5)
 Label(UI_frame, text="Algorithm: ", bg='grey').grid(row=0, column=0, padx=5, pady=5, sticky=W)
-algMenu = ttk.Combobox(UI_frame, textvariable=selected_alg, values=['Quick Sort'])
+algMenu =Label(UI_frame,text='Quick Sort')
 algMenu.grid(row=0, column=1, padx=5, pady=5)
-algMenu.current(0)
-
 speedScale = Scale(UI_frame, from_=0.1, to=5.0, length=200, digits=2, resolution=0.2, orient=HORIZONTAL, label="Select Speed [s]")
 speedScale.grid(row=0, column=2, padx=5, pady=5)
 Button(UI_frame, text="Start", command=StartAlgorithm, bg='red').grid(row=0, column=3, padx=5, pady=5)
-
-#Row[1]
 sizeEntry = Scale(UI_frame, from_=3, to=25, resolution=1, orient=HORIZONTAL, label="Data Size")
 sizeEntry.grid(row=1, column=0, padx=5, pady=5)
-
-minEntry = Scale(UI_frame, from_=0, to=10, resolution=1, orient=HORIZONTAL, label="Min Value")
-minEntry.grid(row=1, column=1, padx=5, pady=5)
-
 maxEntry = Scale(UI_frame, from_=10, to=100, resolution=1, orient=HORIZONTAL, label="Max Value")
-maxEntry.grid(row=1, column=2, padx=5, pady=5)
-
-Button(UI_frame, text="Generate", command=Generate, bg='white').grid(row=1, column=3, padx=5, pady=5)
-
-root.mainloop()
+maxEntry.grid(row=1, column=1, padx=5, pady=5)
+Button(UI_frame, text="Generate", command=Generate, bg='white').grid(row=1, column=2, padx=5, pady=5)
+def run_quick_sort():
+    root.mainloop()
