@@ -3,11 +3,11 @@ This project started off as a semester project, but you can add your own algorit
 Coding BaBa's :muscle:  
 members who  started this project:\
 Mark Up:
-    *Dipanshu Singh 
-    *Sahil Srivastav
-    *Ashwin Sharma 
-    *D N V Varunendra K K
-    *Aryan Mishra
+    * Dipanshu Singh 
+    * Sahil Srivastav
+    * Ashwin Sharma 
+    * D N V Varunendra K K
+    * Aryan Mishra
 ## Requirements to install 	:computer:
 Python > 3.0__
 Packages:
