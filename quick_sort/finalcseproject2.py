@@ -1,4 +1,3 @@
-from cProfile import run
 from tkinter import *
 import random
 from quicksort import quick_sort
