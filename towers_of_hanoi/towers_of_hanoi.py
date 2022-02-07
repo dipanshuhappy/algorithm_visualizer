@@ -88,5 +88,4 @@ def run_towers_of_hanoi():
     solve_tower_of_hanoi(output, output.rings, 0, 2, 1)
     win.getMouse()
 run_towers_of_hanoi()
-# print(output)
 
