@@ -77,7 +77,7 @@ def drawData(data, colorArray):
     c_height = 380
     c_width = 600
     x_width = c_width / (len(data) + 1)
-    offset = 30
+    offset = 0
     spacing = 10
     normalizedData = [ i / max(data) for i in data]
     for i, height in enumerate(normalizedData):
