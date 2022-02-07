@@ -92,5 +92,4 @@ def run_towers_of_hanoi():
     win.close()
     sys.exit()
 run_towers_of_hanoi()
-# print(output)
 
