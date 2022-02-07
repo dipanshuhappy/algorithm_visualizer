@@ -26,7 +26,8 @@ class AlgorithmVisualizer(Tk):
     def on_towers_of_hanoi(self):
         from towers_of_hanoi.towers_of_hanoi import run_towers_of_hanoi
         run_towers_of_hanoi()
-    def on_selection_sort(self):
+        self.destroy()
+    def on_selection_sort(self):   
         from selection_sort.SelectionSortVisualisation import run_sort_visualisation
         run_sort_visualisation()
     def on_quick_sort(self):

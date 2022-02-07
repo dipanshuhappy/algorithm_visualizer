@@ -1,4 +1,5 @@
 from graphics import *
+import sys
 win=GraphWin(title='towers of hanoi',width=800,height=800)
 class Tower:
     def __init__(self,id,point,discs=[]):
@@ -23,6 +24,7 @@ class Disc:
         self.disc.draw(win)
     def move_disc(self,tower:Tower):
         tower.undraw_tower()
+        print('animating')
         dx=tower.tower.getP2().x-self.disc.getCenter().x
         dy=tower.tower.getP2().y-self.disc.getCenter().y
         if len(tower.discs)>0:
@@ -87,6 +89,8 @@ def run_towers_of_hanoi():
                 disc.draw_disc()
     solve_tower_of_hanoi(output, output.rings, 0, 2, 1)
     win.getMouse()
+    win.close()
+    sys.exit()
 run_towers_of_hanoi()
 # print(output)
 
