@@ -15,3 +15,22 @@ def run_game_of_life():
     Game((1400,800)).run_mainloop()
 if __name__=='__main__':
     g=Game(( 1400, 800))
+
+
+
+def quick_sort(data, head, tail, drawData, timeTick):
+    if head < tail:
+        partitionIdx = partition(data, head, tail, drawData, timeTick)
+
+        #LEFT PARTITION
+        quick_sort(data, head, partitionIdx-1, drawData, timeTick)
+
+        #RIGHT PARTITION
+        quick_sort(data, partitionIdx+1, tail, drawData, timeTick)
+
+
+data = [-2, 45, 0, 11, -9, 15, 8, 30]
+size = len(data)
+selectionSort(data, size)
+print('Sorted Array in Ascending Order:')
+print(data
