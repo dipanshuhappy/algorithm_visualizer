@@ -27,3 +27,10 @@ def quick_sort(data, head, tail, drawData, timeTick):
 
         #RIGHT PARTITION
         quick_sort(data, partitionIdx+1, tail, drawData, timeTick)
+
+
+data = [-2, 45, 0, 11, -9, 15, 8, 30]
+size = len(data)
+selectionSort(data, size)
+print('Sorted Array in Ascending Order:')
+print(data
